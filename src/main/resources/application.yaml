@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:h2:c:\dev\spring\test;DB_CLOSE_ON_EXIT=FALSE
+    username: fiap
+    password: fiap
+
+
+file:
+  path: c:\dev\spring\teste.txt
+  input: classpath:pessoa.csv
