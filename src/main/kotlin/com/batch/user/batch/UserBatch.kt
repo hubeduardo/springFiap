@@ -40,7 +40,6 @@ class UserBatch {
     fun reader(): ItemReader<User> {
         val reader: FlatFileItemReader<User> = FlatFileItemReader<User>()
         reader.setResource(ClassPathResource("pessoa.csv"))
-        reader.setLinesToSkip(1)
 
         val lineMapper: DefaultLineMapper<User> = DefaultLineMapper<User>()
         val tokenizer = DelimitedLineTokenizer()
