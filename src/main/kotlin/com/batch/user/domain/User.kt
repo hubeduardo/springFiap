@@ -1,17 +1,13 @@
 package com.batch.user.domain
 
-import java.io.File
-import java.io.InputStream
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 
-class User {
-    var nome: String? = null
-    var cpf: String? = null
-
-    constructor(nome: String?, cpf: String?) {
-        this.nome = nome
-        this.cpf = cpf
+@JsonIgnoreProperties(ignoreUnknown = true)
+data class User(
+    var name: String? = null,
+    var doc: String? = null
+) {
+    fun get(): String {
+        return "name: $name, doc: $doc"
     }
-
-
-
 }

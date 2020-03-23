@@ -1,6 +1,11 @@
-FROM openjdk:8-jdk-alpine
+FROM openjdk:8-jre-alpine
 
-RUN mkdir /code
-COPY build/libs /code
+RUN apk add --update bash && rm -rf /var/cache/apk/*
 
-ENTRYPOINT [ "sh", "-c", "java -jar -Duser.timezone=$TIMEZONE -Dnetworkaddress.cache.ttl=60 -Dnetworkaddress.cache.negative.ttl=30 -Xms1024m -Xmx2048m -server -XX:+UseG1GC -XX:MaxGCPauseMillis=200 /code/*.jar" ]
+USER root
+RUN  apk update && apk upgrade && apk add netcat-openbsd
+RUN mkdir -p /usr/local/batch
+ADD build/libs/userBatch-0.0.1-SNAPSHOT.jar /usr/local/batch/userBatch-0.0.1-SNAPSHOT.jar
+ADD run.sh run.sh
+RUN chmod +x run.sh
+CMD ./run.sh

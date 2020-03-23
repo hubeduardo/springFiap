@@ -1,1 +1,1 @@
-rootProject.name = "quser"
+rootProject.name = "userBatch"
