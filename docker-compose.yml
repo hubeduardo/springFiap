@@ -1,7 +1,7 @@
 version: '3'
 services:
-  batch-mongodb:
-    container_name: batch-mongodb
+  fiap-mongodb:
+    container_name: fiap-mongodb
     image: mongo:3.4
     volumes:
       - ./_data:/data/db
@@ -13,13 +13,13 @@ services:
   batch-app:
     container_name: batch-app
     image: batch-app
-    build: Dockerfile
+    build: ./app
     environment:
       - SERVER_PORT=8080
-      - MONGODB_URI=mongodb://localhost:27017/fiap
-      - MONGODB_STATUS_HOST=localhost/
-      - MONGODB_STATUS_PORT=27017
+      - MONGODB_URI=mongodb://fiap-mongodb:27017/fiap
+      - MONGODB_STATUS_HOST=fiap-mongodb
+      - MONGODB_STATUS_PORT=28017
     ports:
       - "8080:8080"
     depends_on:
-      - batch-mongodb
+      - fiap-mongodb
