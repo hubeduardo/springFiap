@@ -32,7 +32,7 @@ class BatchConfiguration {
 
         return FlatFileItemReaderBuilder<User>()
             .name("userRead")
-            .resource(ClassPathResource("pessoa.csv"))
+            .resource(ClassPathResource("pessoa.txt"))
             .delimited()
             .names(*arrayOf("name", "doc"))
             .fieldSetMapper(object : BeanWrapperFieldSetMapper<User?>() {
