@@ -30,9 +30,9 @@ data class CreateUserRequest(
 
     @field:NotNull
     @field:NotEmpty
-    @JsonProperty("cpf")
+    @JsonProperty("doc")
     @get:CPF()
-    val CPF: String = "",
+    val doc: String = "",
 
     @JsonProperty("image_url")
     var imageUrl: String = "",

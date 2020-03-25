@@ -32,7 +32,7 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-fiap")
+	implementation("org.springframework.boot:spring-boot-starter-batch")
 	implementation("com.h2database:h2:1.4.197")
 	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")

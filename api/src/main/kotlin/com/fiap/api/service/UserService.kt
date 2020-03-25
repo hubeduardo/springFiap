@@ -104,6 +104,8 @@ class UserService {
             }
     }
 
+    fun findByDoc(doc: String) = just(userRepository.findByDoc(doc))
+
     fun findById(id: String) = just(userRepository.findById(id))
 
     private fun save(user: User) = just(userRepository.save(user))

@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository
 @Repository
 interface UserRepository : MongoRepository <User, String> {
 
+    fun findByDoc(doc: String): MutableList<User>
+
     fun findByEmail(email: String): MutableList<User>
     // fun removeById(id: String): Boolean
 }

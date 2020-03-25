@@ -30,8 +30,8 @@ data class User(
     @JsonProperty("email")
     val email: String = "",
 
-    @JsonProperty("cpf")
-    val CPF: String = "",
+    @JsonProperty("doc")
+    val doc: String = "",
 
     @JsonProperty("image_url")
     val imageUrl: String = "",
@@ -66,7 +66,7 @@ data class User(
             name = createUserRequest.name,
             lastName = createUserRequest.lastName,
             email = createUserRequest.email,
-            CPF = createUserRequest.CPF,
+            doc = createUserRequest.doc,
             imageUrl = createUserRequest.imageUrl,
             password = Encrypt().generateEncryptPassword(createUserRequest.password),
             birthday = createUserRequest.birthday

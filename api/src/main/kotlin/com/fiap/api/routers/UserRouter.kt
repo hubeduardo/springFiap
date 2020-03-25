@@ -1,7 +1,9 @@
 package com.fiap.api.routers
 
 object UserRouter {
-    const val CREATE_USER_V1 = "/v1/create-fiap"
-    const val DELETE_USER_V1 = "/v1/delete-fiap"
-    const val UPDATE_USER_V1 = "/v1/update-fiap"
+    const val BASE_PATH = "/v1/fiap"
+    const val CREATE_USER_V1 = "$BASE_PATH/create-user"
+    const val DELETE_USER_V1 = "$BASE_PATH/delete-user"
+    const val UPDATE_USER_V1 = "$BASE_PATH/update-user"
+    const val GET_USER_V1 = "$BASE_PATH/get-user/{doc}"
 }

@@ -49,7 +49,7 @@ class UserControllerTest {
                 lastName = "lastName",
                 email = "teste@gmail.com",
                 imageUrl = "",
-                CPF = "111.222.333.444",
+                doc = "111.222.333.444",
                 password = "teste",
                 birthday = LocalDate.of(2002, 1,2)
         )
@@ -61,7 +61,7 @@ class UserControllerTest {
                 id = "5e77608ae8fe1146d83ec679",
                 name = "name",
                 lastName = "last_name",
-                CPF = "111.222.333",
+                doc = "111.222.333",
                 password = "teste",
                 email = "teste@gmail.com",
                 imageUrl = ""

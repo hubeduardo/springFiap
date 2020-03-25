@@ -84,7 +84,7 @@ class UserServiceTest {
         Assert.assertEquals(user.name, expected?.name)
         Assert.assertEquals(user.lastName, expected?.lastName)
         Assert.assertEquals(user.email, expected?.email)
-        Assert.assertEquals(user.CPF, expected?.CPF)
+        Assert.assertEquals(user.doc, expected?.doc)
         Assert.assertEquals(user.imageUrl, expected?.imageUrl)
     }
 

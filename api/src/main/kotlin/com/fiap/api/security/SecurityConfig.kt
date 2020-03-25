@@ -20,6 +20,6 @@ class SecurityConfig  : WebSecurityConfigurerAdapter() {
             sessionManagement()?.
             sessionCreationPolicy(SessionCreationPolicy.STATELESS)?.and()?.
             csrf()?.disable()
-}
-
+    }
+    
 }
