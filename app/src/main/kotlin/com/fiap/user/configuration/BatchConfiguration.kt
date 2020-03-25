@@ -11,6 +11,10 @@ import org.springframework.batch.item.data.builder.MongoItemWriterBuilder
 import org.springframework.batch.item.file.FlatFileItemReader
 import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper
+import org.springframework.batch.item.file.mapping.FieldSetMapper
+import org.springframework.batch.item.file.transform.FixedLengthTokenizer
+import org.springframework.batch.item.file.transform.LineTokenizer
+import org.springframework.batch.item.file.transform.Range
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -27,20 +31,30 @@ class BatchConfiguration {
     @Autowired
     private lateinit var stepBuilderFactory: StepBuilderFactory
 
-    @Bean
-    fun reader(): FlatFileItemReader<User>? {
 
+    @Bean
+    fun userLineTokenizer(): LineTokenizer {
+        val tokenizer = FixedLengthTokenizer()
+        tokenizer.setColumns(*arrayOf(Range(1, 41), Range(42, 55)))
+        tokenizer.setNames(*arrayOf("name", "doc"))
+        return tokenizer
+    }
+
+    @Bean
+    fun reader(): FlatFileItemReader<User> {
         return FlatFileItemReaderBuilder<User>()
-            .name("userRead")
-            .resource(ClassPathResource("pessoa.txt"))
-            .delimited()
-            .names(*arrayOf("name", "doc"))
-            .fieldSetMapper(object : BeanWrapperFieldSetMapper<User?>() {
-                init {
-                    setTargetType(User::class.java)
-                }
-            })
-            .build()
+                .name("userRead")
+                .resource(ClassPathResource("pessoa.txt"))
+                .recordSeparatorPolicy(BlankLineRecordSeparatorPolicy())
+                .lineTokenizer(userLineTokenizer())
+                .fieldSetMapper(userFieldSetMapper())
+                .comments("-------")
+                .build()
+    }
+
+    @Bean
+    fun userFieldSetMapper(): FieldSetMapper<User> {
+        return UserFieldSetMapper()
     }
 
     @Bean
