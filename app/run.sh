@@ -18,4 +18,4 @@ echo "********************************************************"
 java -Dspring.profiles.active=local \
      -Dserver.port=$SERVER_PORT \
      -Dspring.data.mongodb.uri=$MONGODB_URI \
-     -jar /usr/local/batch/userBatch-0.0.1-SNAPSHOT.jar
+     -jar /usr/local/batch/app-0.0.1-SNAPSHOT.jar
