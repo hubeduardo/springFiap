@@ -10,17 +10,13 @@ import org.springframework.data.mongodb.core.mapping.Document
 import java.time.LocalDate
 
 
-@Document(collection = "fiap")
+@Document(collection = "user")
 data class User(
 
     @Id
     @JsonProperty("id")
     val id: String? = ObjectId().toHexString(),
 
- /*
-    @JsonProperty("application_user_id")
-    val applicationUserId: Long = 0,
- */
     @JsonProperty("name")
     val name: String = "",
 
