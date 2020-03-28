@@ -55,7 +55,7 @@ class UserServiceTest {
         val responseNewEvent = User().mergeDataUser(newUser, responseFindById.get())
         `when`(userRepository.save(responseNewEvent)).thenReturn(responseNewEvent)
 
-        val expected: User? = userService.updateUser(newUser, "q11qq1q1q1q1").toFuture().get()
+        val expected: User? = userService.updateUser(newUser, "w123").toFuture().get()
 
         Assert.assertEquals(true, expected?.name == oldUser.name)
         Assert.assertEquals(true, expected?.imageUrl == newUser.imageUrl)

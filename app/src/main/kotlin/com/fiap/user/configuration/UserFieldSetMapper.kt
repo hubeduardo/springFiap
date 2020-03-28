@@ -10,6 +10,7 @@ class UserFieldSetMapper : FieldSetMapper<User> {
         val user = User()
         user.name = fieldSet.readString("name").trim()
         user.doc = fieldSet.readString("doc")
+        user.digit = fieldSet.readString("digit")
 
         return user
     }

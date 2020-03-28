@@ -35,8 +35,8 @@ class BatchConfiguration {
     @Bean
     fun userLineTokenizer(): LineTokenizer {
         val tokenizer = FixedLengthTokenizer()
-        tokenizer.setColumns(*arrayOf(Range(1, 41), Range(42, 55)))
-        tokenizer.setNames(*arrayOf("name", "doc"))
+        tokenizer.setColumns(*arrayOf(Range(1, 41), Range(42, 49), Range(50, 55)))
+        tokenizer.setNames(*arrayOf("name", "doc", "digit"))
         return tokenizer
     }
 
