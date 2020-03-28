@@ -12,6 +12,7 @@ import java.util.concurrent.Future
 import javax.validation.Valid
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
+import springfox.documentation.swagger2.annotations.EnableSwagger2
 
 @RestController
 class UserController {
