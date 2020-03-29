@@ -40,3 +40,8 @@ cd springFiap
 cd springFiap
 sh start-project.sh
 ```
+
+## Finish Process for docker
+```
+docker-compose down --rmi all
+```

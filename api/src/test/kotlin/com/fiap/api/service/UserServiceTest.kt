@@ -3,6 +3,7 @@ package com.fiap.api.service
 import com.fiap.api.domain.User
 import com.fiap.api.entities.request.UpdateUserRequest
 import com.fiap.api.repository.UserRepository
+import java.time.LocalDate
 import java.util.Optional
 import org.junit.Assert
 import org.junit.Test
@@ -16,7 +17,6 @@ import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.test.context.TestExecutionListeners
 import org.springframework.test.context.junit4.SpringRunner
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener
-import java.time.LocalDate
 
 @RunWith(SpringRunner::class)
 @SpringBootTest
@@ -30,8 +30,7 @@ class UserServiceTest {
     @MockBean
     private lateinit var userRepository: UserRepository
 
-    private fun getUser(id : String): User {
-
+    private fun getUser(id: String): User {
 
         return User(id,
                 "Nome",
@@ -41,7 +40,7 @@ class UserServiceTest {
                 "",
                 1,
                 "teste",
-                LocalDate.of(2002,1,2))
+                LocalDate.of(2002, 1, 2))
     }
 
     @Test

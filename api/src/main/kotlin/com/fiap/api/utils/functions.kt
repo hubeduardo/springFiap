@@ -40,7 +40,7 @@ fun HttpServletRequest.getHeadersInfo(): Map<String, String> {
 }
 
 inline fun <reified T : Enum<T>> enumContains(valor: Int): Boolean {
-    return enumValues<T>().any { it.ordinal == valor}
+    return enumValues<T>().any { it.ordinal == valor }
 }
 
 fun Map<String, String>.setTextPlain(type: String): Map<String, String> {

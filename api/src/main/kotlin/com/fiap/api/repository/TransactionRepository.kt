@@ -8,5 +8,4 @@ import org.springframework.stereotype.Repository
 interface TransactionRepository : MongoRepository<Transaction, String> {
 
     fun findByuserDoc(userDoc: String): MutableList<Transaction>
-
 }

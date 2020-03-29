@@ -12,7 +12,6 @@ import java.util.concurrent.Future
 import javax.validation.Valid
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
-import springfox.documentation.swagger2.annotations.EnableSwagger2
 
 @RestController
 class UserController {
@@ -22,8 +21,8 @@ class UserController {
 
     @PutMapping(UserRouter.UPDATE_USER_V1)
     fun updateUser(
-            @Valid @RequestBody updateUserRequest: UpdateUserRequest,
-            @RequestHeader(value = "id") applicationUserId: String
+        @Valid @RequestBody updateUserRequest: UpdateUserRequest,
+        @RequestHeader(value = "id") applicationUserId: String
     ): Future<User> {
 
         return userService.checkUpdateUser(updateUserRequest, applicationUserId).toFutureResponse()
@@ -40,7 +39,7 @@ class UserController {
 
     @PostMapping(UserRouter.CREATE_USER_V1)
     fun createUser(
-            @Valid @RequestBody createUserRequest: CreateUserRequest
+        @Valid @RequestBody createUserRequest: CreateUserRequest
     ): Future<User> {
 
         return userService.checkCreateUser(createUserRequest).toFutureResponse()

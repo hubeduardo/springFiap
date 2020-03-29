@@ -1,11 +1,10 @@
 package com.fiap.api.entities.request
 
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.springframework.format.annotation.DateTimeFormat
 import java.time.LocalDate
 import javax.validation.constraints.NotEmpty
 import javax.validation.constraints.NotNull
-
+import org.springframework.format.annotation.DateTimeFormat
 
 data class UpdateUserRequest(
 
@@ -21,7 +20,6 @@ data class UpdateUserRequest(
 
     @JsonProperty("last_name")
     var lastName: String = "",
-
 
     @JsonProperty("email")
     var email: String = "",

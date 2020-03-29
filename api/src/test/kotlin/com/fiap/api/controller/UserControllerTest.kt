@@ -9,6 +9,8 @@ import com.fiap.api.entities.response.DeleteResponse
 import com.fiap.api.routers.UserRouter
 import com.fiap.api.service.UserService
 import io.reactivex.Single
+import java.time.LocalDate
+import kotlin.collections.HashMap
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -22,8 +24,6 @@ import org.springframework.test.context.junit4.SpringRunner
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
-import java.time.LocalDate
-import kotlin.collections.HashMap
 
 @RunWith(SpringRunner::class)
 @WebMvcTest(UserController::class)
@@ -51,7 +51,7 @@ class UserControllerTest {
                 imageUrl = "",
                 doc = "111.222.333.444",
                 password = "teste",
-                birthday = LocalDate.of(2002, 1,2)
+                birthday = LocalDate.of(2002, 1, 2)
         )
     }
 
@@ -66,8 +66,6 @@ class UserControllerTest {
                 email = "teste@gmail.com",
                 imageUrl = ""
         )
-
-
     }
 
     @Test

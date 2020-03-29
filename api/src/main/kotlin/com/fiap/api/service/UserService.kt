@@ -28,15 +28,11 @@ class UserService {
 
         val users: MutableList<User> = userRepository.findByEmail(createUserRequest.email)
 
-        return if (users.isEmpty())
-        {
+        return if (users.isEmpty()) {
             saveUser(User().convertToUser(createUserRequest))
-        }
-        else
-        {
+        } else {
             Single.error(UserException("400", Translator.getMessage(ErrorCode.USER_ALREADY_EXIST)))
         }
-
     }
 
     fun checkUpdateUser(updateUserRequest: UpdateUserRequest, applicationUserId: String): Single<User> {

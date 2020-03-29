@@ -40,7 +40,6 @@ data class CreateUserRequest(
     @JsonProperty("password")
     var password: String = "",
 
-
     @JsonProperty("birthday")
     var birthday: LocalDate?
 )

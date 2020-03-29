@@ -10,9 +10,8 @@ class EncryptTest {
     private val bCryptEncoder = BCryptPasswordEncoder()
 
     @Test
-    fun testGeneratePassword(){
-        val hash = Encrypt().generateEncryptPassword(password);
+    fun testGeneratePassword() {
+        val hash = Encrypt().generateEncryptPassword(password)
         Assert.assertTrue(bCryptEncoder.matches(password, hash))
     }
-
 }

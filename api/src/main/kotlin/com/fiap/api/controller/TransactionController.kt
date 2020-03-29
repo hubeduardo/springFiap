@@ -10,17 +10,15 @@ import com.fiap.api.service.TransactionService
 import com.fiap.api.service.UserService
 import com.fiap.api.utils.PDFService
 import com.fiap.api.utils.toFutureResponse
-import io.reactivex.Single
+import java.io.ByteArrayInputStream
+import java.util.concurrent.Future
+import javax.validation.Valid
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.core.io.InputStreamResource
 import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import java.io.ByteArrayInputStream
-import java.util.concurrent.Future
-import javax.validation.Valid
-
 
 @RestController
 class TransactionController {
@@ -37,10 +35,9 @@ class TransactionController {
     @Autowired
     private lateinit var userService: UserService
 
-
     @PostMapping(TransactionRouter.CREATE_TRANSACTION_V1)
     fun createTransaction(
-            @Valid @RequestBody createTransactionRequest: CreateTransactionRequest
+        @Valid @RequestBody createTransactionRequest: CreateTransactionRequest
     ): Future<Transaction> {
 
         return transactionService.checkCreateTransaction(createTransactionRequest).toFutureResponse()
@@ -48,12 +45,12 @@ class TransactionController {
 
     @GetMapping(TransactionRouter.GENERATE_EXTRATO_V1)
     fun generateExtrato(
-            @PathVariable("doc") doc: String
+        @PathVariable("doc") doc: String
     ): ResponseEntity<InputStreamResource> {
 
-        var user : User = userRepository.findByDoc(doc).first()
+        var user: User = userRepository.findByDoc(doc).first()
 
-        var transactions : MutableList<Transaction> = transactionRepository.findByuserDoc(doc)
+        var transactions: MutableList<Transaction> = transactionRepository.findByuserDoc(doc)
 
         val bis: ByteArrayInputStream = PDFService.report(user, transactions)
 

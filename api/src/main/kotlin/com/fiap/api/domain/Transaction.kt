@@ -2,33 +2,30 @@ package com.fiap.api.domain
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fiap.api.entities.request.CreateTransactionRequest
-import com.fiap.api.security.Encrypt
+import java.time.LocalDate
 import org.bson.types.ObjectId
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
-import java.time.LocalDate
-
+import java.time.LocalDateTime
 
 @Document(collection = "transaction")
 data class Transaction(
 
-        @Id
-        @JsonProperty("id")
-        val id: String? = ObjectId().toHexString(),
+    @Id
+    @JsonProperty("id")
+    val id: String? = ObjectId().toHexString(),
 
-        @JsonProperty("user_doc")
-        val userDoc: String = "",
+    @JsonProperty("user_doc")
+    val userDoc: String = "",
 
-        @JsonProperty("date_Transaction")
-        val dateTransaction: LocalDate? = null,
+    @JsonProperty("date_transaction")
+    val dateTransaction: LocalDateTime = LocalDateTime.now(),
 
-        @JsonProperty("description")
-        val description: String = "",
+    @JsonProperty("description")
+    val description: String = "",
 
-        @JsonProperty("amount")
-        val amount: Double = 0.0
-
-
+    @JsonProperty("amount")
+    val amount: Double = 0.0
 
 ) {
 

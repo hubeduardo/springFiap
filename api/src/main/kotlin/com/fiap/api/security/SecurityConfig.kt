@@ -10,16 +10,15 @@ import org.springframework.security.config.http.SessionCreationPolicy
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-class SecurityConfig  : WebSecurityConfigurerAdapter() {
+class SecurityConfig : WebSecurityConfigurerAdapter() {
 
    override fun configure(http: HttpSecurity?) {
-     http?.authorizeRequests()?.
-            anyRequest()?.
-            authenticated()?.and()?.
-            httpBasic()?.and()?.
-            sessionManagement()?.
-            sessionCreationPolicy(SessionCreationPolicy.STATELESS)?.and()?.
-            csrf()?.disable()
+     http?.authorizeRequests()
+            ?.anyRequest()
+            ?.authenticated()?.and()
+            ?.httpBasic()?.and()
+            ?.sessionManagement()
+            ?.sessionCreationPolicy(SessionCreationPolicy.STATELESS)?.and()
+            ?.csrf()?.disable()
     }
-    
 }

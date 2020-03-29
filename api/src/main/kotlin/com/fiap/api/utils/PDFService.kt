@@ -10,15 +10,13 @@ import com.itextpdf.text.Phrase
 import com.itextpdf.text.pdf.PdfPCell
 import com.itextpdf.text.pdf.PdfPTable
 import com.itextpdf.text.pdf.PdfWriter
-import io.reactivex.Single
-import org.slf4j.LoggerFactory
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
-
+import org.slf4j.LoggerFactory
 
 object PDFService {
     private val logger = LoggerFactory.getLogger(PDFService::class.java)
-    fun report(user : User, transactions: List<Transaction>): ByteArrayInputStream {
+    fun report(user: User, transactions: List<Transaction>): ByteArrayInputStream {
         val document = Document()
         val out = ByteArrayOutputStream()
         try {
@@ -37,11 +35,9 @@ object PDFService {
             tableHeader2.setWidthPercentage(90F)
             tableHeader2.setWidths(intArrayOf(50, 50))
 
-
             hcell = PdfPCell(Phrase(user.name, headFont))
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER)
             tableHeader2.addCell(hcell)
-
 
             hcell = PdfPCell(Phrase(user.doc, headFont))
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER)
@@ -50,9 +46,6 @@ object PDFService {
             val table = PdfPTable(3)
             table.setWidthPercentage(90F)
             table.setWidths(intArrayOf(3, 3, 3))
-
-
-
 
             hcell = PdfPCell(Phrase("Description", headFont))
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER)

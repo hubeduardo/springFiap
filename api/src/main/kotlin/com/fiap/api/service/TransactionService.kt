@@ -1,7 +1,6 @@
 package com.fiap.api.service
 
 import com.fiap.api.domain.Transaction
-import com.fiap.api.domain.User
 import com.fiap.api.entities.exception.UserException
 import com.fiap.api.entities.request.CreateTransactionRequest
 import com.fiap.api.repository.TransactionRepository
@@ -19,9 +18,11 @@ class TransactionService {
     private val logger = LoggerFactory.getLogger(TransactionService::class.java)
 
     @Autowired
-    private lateinit var transactionRepository : TransactionRepository
+    private lateinit var transactionRepository: TransactionRepository
 
     fun checkCreateTransaction(createTransactionRequest: CreateTransactionRequest): Single<Transaction> {
+        logger.info("Start checkCreateTransaction by request: $createTransactionRequest")
+
        return saveTransaction(Transaction().convertToTransaction(createTransactionRequest))
     }
 
@@ -38,10 +39,7 @@ class TransactionService {
                 }
     }
 
-
-
     private fun save(transaction: Transaction) = just(transactionRepository.save(transaction))
 
     fun findByDoc(doc: String) = just(transactionRepository.findByuserDoc(doc))
-
 }

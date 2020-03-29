@@ -4,11 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import com.fiap.api.entities.request.CreateUserRequest
 import com.fiap.api.entities.request.UpdateUserRequest
 import com.fiap.api.security.Encrypt
+import java.time.LocalDate
 import org.bson.types.ObjectId
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
-import java.time.LocalDate
-
 
 @Document(collection = "user")
 data class User(
@@ -38,8 +37,8 @@ data class User(
     @JsonProperty("password")
     val password: String = "",
 
-   @JsonProperty("birthday")
-   val birthday: LocalDate? = null
+    @JsonProperty("birthday") 
+    val birthday: LocalDate? = null
 
 ) {
     fun mergeDataUser(newUser: UpdateUserRequest, oldUser: User): User {
