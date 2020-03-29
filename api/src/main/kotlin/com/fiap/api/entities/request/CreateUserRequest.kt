@@ -2,9 +2,7 @@ package com.fiap.api.entities.request
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.hibernate.validator.constraints.br.CPF
 import java.time.LocalDate
-
 import javax.validation.constraints.Email
 import javax.validation.constraints.NotEmpty
 import javax.validation.constraints.NotNull
@@ -31,7 +29,6 @@ data class CreateUserRequest(
     @field:NotNull
     @field:NotEmpty
     @JsonProperty("doc")
-    @get:CPF()
     val doc: String = "",
 
     @JsonProperty("image_url")
