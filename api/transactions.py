@@ -1,26 +1,36 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from pymongo import MongoClient
 import json
+import random
+import time
+import requests
 
-#client = MongoClient("mongodb://fiap-mongodb:27017/fiap")
-client = MongoClient("mongodb://localhost/fiap")
-db = client.fiap
-col = db.user
+#PATH = '/Users/wagnercarvalho/Desktop/projeto/fiap/spring/springFiap/app/src/main/resources/base.txt'
+PATH = '/usr/local/api/base.txt'
+URL = 'http://localhost:5000/v1/fiap/create-transaction'
+headers = {'Content-Type': 'application/json'}
 
-class Api(object):
+def createPayload(doc):
+    jsonRequest = {'user_doc': doc, 'description': "Processado pela FIAP",
+                   'amount': float("{0:.2f}".format(random.uniform(10.0, 100.0)))}
+    return jsonRequest
 
-    def getMongo(self):
-        print 'find mongo'
-        resp = col.find().limit(5)
-        for data in resp:
-            print 'mongo document'
-            print data
+def post(doc):
+    requests.post(URL, json=createPayload(doc))
+    time.sleep(5)
+
+class Job(object):
+
+    def read(self):
+        with open(PATH) as fp:
+            for line in fp:
+                if line[41:48].isdigit():
+                    post(line[41:48])
 
 def main():
-
-    mongoSelect = Api()
-    mongoSelect.getMongo()
+    time.sleep(100)
+    task = Job()
+    task.read()
 
 if __name__ == "__main__":
     main()
