@@ -17,6 +17,7 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
                 "/v1/fiap/create-user",
                 "/v1/fiap/create-transaction",
                 "/v2/api-docs",
+                "/ping",
                 "/swagger-resources/configuration/ui",
                 "/swagger-resources",
                 "/swagger-resources/configuration/security",

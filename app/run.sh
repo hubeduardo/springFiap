@@ -20,14 +20,14 @@ java -Dspring.profiles.active=local \
      -Dspring.data.mongodb.uri=$MONGODB_URI \
      -jar /usr/local/batch/app-0.0.1-SNAPSHOT.jar
 
-
 echo "********************************************************"
-echo "Wait for transaction by script python"
+echo "Starting transactions"
 echo "********************************************************"
 
 pip install easy_install pip
 pip install python
 pip install py-pip
-pip install requests
+pip install requests==2.21.0
+pip install requests-futures==0.9.9
 
-exec python /usr/local/api/transactions.py
+exec python /usr/local/batch/transactions.py --bind 0.0.0.0
