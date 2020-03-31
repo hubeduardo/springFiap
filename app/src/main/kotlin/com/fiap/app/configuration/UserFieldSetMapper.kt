@@ -1,6 +1,6 @@
-package com.fiap.user.configuration
+package com.fiap.app.configuration
 
-import com.fiap.user.domain.User
+import com.fiap.app.domain.User
 import org.springframework.batch.item.file.mapping.FieldSetMapper
 import org.springframework.batch.item.file.transform.FieldSet
 

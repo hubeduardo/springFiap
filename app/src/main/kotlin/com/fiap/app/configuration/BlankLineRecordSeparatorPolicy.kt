@@ -1,4 +1,4 @@
-package com.fiap.user.configuration
+package com.fiap.app.configuration
 
 import org.springframework.batch.item.file.separator.SimpleRecordSeparatorPolicy
 

@@ -19,8 +19,3 @@ java -Dspring.profiles.active=local \
      -Dserver.port=$SERVER_PORT \
      -Dspring.data.mongodb.uri=$MONGODB_URI \
      -jar /usr/local/api/api-user-0.0.1-SNAPSHOT.jar
-
-
-echo "********************************************************"
-echo "Starting Script to transaction"
-echo "********************************************************"

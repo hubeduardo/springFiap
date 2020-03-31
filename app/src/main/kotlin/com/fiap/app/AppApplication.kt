@@ -1,4 +1,4 @@
-package com.fiap.user
+package com.fiap.app
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

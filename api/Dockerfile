@@ -6,10 +6,20 @@ USER root
 RUN apk update && apk upgrade && apk add netcat-openbsd
 RUN apk add --update python
 RUN apk add --update py-pip
-RUN pip install pymongo
 
 RUN mkdir -p /usr/local/api
+
 ADD build/libs/api-user-0.0.1-SNAPSHOT.jar /usr/local/api/api-user-0.0.1-SNAPSHOT.jar
 ADD run.sh run.sh
+
 RUN chmod +x run.sh
+
 CMD ./run.sh
+
+EXPOSE 5000
+
+
+
+
+
+

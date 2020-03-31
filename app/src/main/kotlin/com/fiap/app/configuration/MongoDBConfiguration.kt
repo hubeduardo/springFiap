@@ -1,4 +1,4 @@
-package com.fiap.user.configuration
+package com.fiap.app.configuration
 
 import com.mongodb.client.MongoClients
 import org.springframework.beans.factory.annotation.Value

@@ -1,4 +1,4 @@
-package com.fiap.user.domain
+package com.fiap.app.domain
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 
