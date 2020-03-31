@@ -18,7 +18,6 @@ def createPayload(doc):
 def post(doc):
     try:
         resp = requests.post(URL, json=createPayload(doc))
-        print resp
     except Exception as e:
         print e
         pass

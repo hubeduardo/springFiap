@@ -1,6 +1,30 @@
 # Getting Started
 Spring Boot + Kotlin + MongoDB
 
+
+## Password
+> Todas as requisições deverão ser autenticadas com usuário e password.
+*   *Usuário* = user
+*   *Password* = Buscar em logs para aplicação
+
+> Visualizar os container do docker.
+
+$ docker container ls
+```
+CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                                                NAMES
+40287cc3aa9b        fiap-api            "/bin/sh -c 'sh run.…"   About a minute ago   Up 59 seconds       0.0.0.0:5000->5000/tcp                               fiap-api
+efc650fa0c5f        mongo:3.4           "docker-entrypoint.s…"   7 minutes ago        Up About a minute   0.0.0.0:12345->27017/tcp, 0.0.0.0:23456->28017/tcp   fiap-mongodb
+```
+
+> Buscar logs informando CONTAINER ID.
+
+$ docker container logs 40287cc3aa9b | grep -i "security password"
+```
+Using generated security password: 2babb967-9d13-4a7a-aed9-e9d972413304
+```
+
+
+
 ## Endpoints Ping Test
 Ping by Test Application
 ```
