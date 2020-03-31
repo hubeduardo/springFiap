@@ -7,7 +7,7 @@ import requests
 
 #PATH = '/Users/wagnercarvalho/Desktop/projeto/fiap/spring/springFiap/app/src/main/resources/base.txt'
 PATH = '/usr/local/batch/base.txt'
-URL = 'http://0.0.0.0/v1/fiap/create-transaction'
+URL = 'http://0.0.0.0:5000/v1/fiap/create-transaction'
 headers = {'Content-Type': 'application/json'}
 
 def createPayload(doc):

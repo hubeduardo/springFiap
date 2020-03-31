@@ -14,9 +14,9 @@ ADD src/main/resources/base.txt /usr/local/batch/base.txt
 ADD transactions.py /usr/local/batch/transactions.py
 ADD run.sh run.sh
 
-EXPOSE 5000
-
 RUN chmod +x /usr/local/batch/transactions.py
 RUN chmod +x run.sh
 
 CMD ./run.sh
+
+EXPOSE 8000

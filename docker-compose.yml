@@ -1,15 +1,5 @@
 version: '3'
 services:
-  fiap-nginx:
-    container_name: fiap-nginx
-    image: nginx:1.13
-    restart: always
-    ports:
-      - 80:80
-      - 443:443
-    volumes:
-      - ./nginx/conf.d:/etc/nginx/conf.d
-
   fiap-mongodb:
     container_name: fiap-mongodb
     image: mongo:3.4
@@ -45,5 +35,6 @@ services:
       - MONGODB_STATUS_PORT=28017
     ports:
       - "5000:5000"
+    #network_mode: host
     depends_on:
       - fiap-mongodb
