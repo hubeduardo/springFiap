@@ -23,6 +23,9 @@ $ docker container logs 40287cc3aa9b | grep -i "security password"
 Using generated security password: 2babb967-9d13-4a7a-aed9-e9d972413304
 ```
 
+<p align="center">
+  <img src="https://github.com/caueferreira/akka-bank/blob/master/.github/actors.png" width="360">
+</p>
 
 
 ## Endpoints Ping Test
