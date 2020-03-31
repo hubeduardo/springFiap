@@ -37,7 +37,7 @@ data class User(
     @JsonProperty("password")
     val password: String = "",
 
-    @JsonProperty("birthday") 
+    @JsonProperty("birthday")
     val birthday: LocalDate? = null
 
 ) {

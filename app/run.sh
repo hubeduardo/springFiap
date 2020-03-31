@@ -30,4 +30,4 @@ pip install py-pip
 pip install requests==2.21.0
 pip install requests-futures==0.9.9
 
-exec python /usr/local/batch/transactions.py --bind 0.0.0.0
+#exec python /usr/local/batch/transactions.py
