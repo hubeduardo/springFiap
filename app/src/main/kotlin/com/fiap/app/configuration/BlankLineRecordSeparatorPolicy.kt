@@ -2,7 +2,6 @@ package com.fiap.app.configuration
 
 import org.springframework.batch.item.file.separator.SimpleRecordSeparatorPolicy
 
-
 class BlankLineRecordSeparatorPolicy : SimpleRecordSeparatorPolicy() {
     override
     fun isEndOfRecord(line: String): Boolean {

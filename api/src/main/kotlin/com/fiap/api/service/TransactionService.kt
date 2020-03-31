@@ -23,20 +23,20 @@ class TransactionService {
     fun checkCreateTransaction(createTransactionRequest: CreateTransactionRequest): Single<Transaction> {
         logger.info("Start checkCreateTransaction by request: $createTransactionRequest")
 
-       return saveTransaction(Transaction().convertToTransaction(createTransactionRequest))
+        return saveTransaction(Transaction().convertToTransaction(createTransactionRequest))
     }
 
     fun saveTransaction(transaction: Transaction): Single<Transaction> {
         logger.info("Start saveTransaction with request: $transaction")
 
         return save(transaction)
-                .doOnSuccess {
-                    logger.error("Success")
-                }.doOnError {
-                    logger.error("Error with error: ${it.getError()}")
-                }.onErrorResumeNext {
-                    Single.error(UserException("400", Translator.getMessage(ErrorCode.TRANSACTION_TRY_AGAIN_LATER)))
-                }
+            .doOnSuccess {
+                logger.error("Success")
+            }.doOnError {
+                logger.error("Error with error: ${it.getError()}")
+            }.onErrorResumeNext {
+                Single.error(UserException("400", Translator.getMessage(ErrorCode.TRANSACTION_TRY_AGAIN_LATER)))
+            }
     }
 
     private fun save(transaction: Transaction) = just(transactionRepository.save(transaction))

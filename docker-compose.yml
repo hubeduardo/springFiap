@@ -21,6 +21,7 @@ services:
       - MONGODB_STATUS_PORT=28017
     ports:
       - "3000:3000"
+      - "5050:5050"
     depends_on:
       - fiap-mongodb
 
@@ -35,6 +36,5 @@ services:
       - MONGODB_STATUS_PORT=28017
     ports:
       - "5000:5000"
-    #network_mode: host
     depends_on:
       - fiap-mongodb

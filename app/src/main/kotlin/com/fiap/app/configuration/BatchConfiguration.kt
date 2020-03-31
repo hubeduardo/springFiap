@@ -30,7 +30,6 @@ class BatchConfiguration {
     @Autowired
     private lateinit var stepBuilderFactory: StepBuilderFactory
 
-
     @Bean
     fun userLineTokenizer(): LineTokenizer {
         val tokenizer = FixedLengthTokenizer()
