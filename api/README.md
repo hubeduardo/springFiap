@@ -5,7 +5,7 @@ Spring Boot + Kotlin + MongoDB
 ## Efetuar autenticação para requisições
 > Todas as requisições deverão ser autenticadas com usuário e password.
 *   *Usuário* = user
-*   *Password* = Buscar em logs para aplicação
+*   *Senha* = Buscar em logs para aplicação
 
 > Visualizar os container do docker.
 
@@ -23,10 +23,20 @@ $ docker container logs 40287cc3aa9b | grep -i "security password"
 Using generated security password: 2babb967-9d13-4a7a-aed9-e9d972413304
 ```
 
+> O usuário e senha deverão ser informados:
+
+Postman
+```
 <p align="center">
   <img src="https://github.com/hubeduardo/springFiap/blob/master/.github/postman.png" width="800">
 </p>
-
+```
+Navegador
+```
+<p align="center">
+  <img src="https://github.com/hubeduardo/springFiap/blob/master/.github/navegador.png" width="800">
+</p>
+```
 
 ## Endpoints Ping Test
 Ping by Test Application
