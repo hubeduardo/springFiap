@@ -2,7 +2,7 @@
 Spring Boot + Kotlin + MongoDB
 
 
-## Password
+## Efetuar autentição para requisições
 > Todas as requisições deverão ser autenticadas com usuário e password.
 *   *Usuário* = user
 *   *Password* = Buscar em logs para aplicação
