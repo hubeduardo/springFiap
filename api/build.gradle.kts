@@ -48,8 +48,7 @@ dependencies {
 	implementation("com.squareup.retrofit2:adapter-rxjava2:2.4.0")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation ("org.mockito:mockito-core:2.8.9")
-
-
+	testImplementation ("org.springframework.security:spring-security-test")
 }
 
 tasks.withType<Test> {

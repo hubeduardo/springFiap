@@ -15,8 +15,6 @@ data class UpdateUserRequest(
     @JsonProperty("id")
     val id: String = "",
 
-    @field:NotNull
-    @field:NotEmpty
     @JsonProperty("name")
     var name: String = "",
 
@@ -32,9 +30,6 @@ data class UpdateUserRequest(
     @JsonProperty("password")
     val password: String = "",
 
-    @field:NotNull
-    @field:NotEmpty
-    @get:DateTimeFormat(pattern = "dd/MM/yyyy")
     @JsonProperty("birthday")
     val birthday: LocalDateTime? = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS)
 

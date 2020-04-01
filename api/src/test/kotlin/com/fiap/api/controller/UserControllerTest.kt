@@ -9,7 +9,6 @@ import com.fiap.api.entities.response.DeleteResponse
 import com.fiap.api.routers.UserRouter
 import com.fiap.api.service.UserService
 import io.reactivex.Single
-import java.time.LocalDate
 import kotlin.collections.HashMap
 import org.junit.Before
 import org.junit.Test
@@ -20,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType
+import org.springframework.security.test.context.support.WithMockUser
 import org.springframework.test.context.junit4.SpringRunner
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
@@ -30,6 +30,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 class UserControllerTest {
 
     @MockBean
+    @Autowired
     private lateinit var userService: UserService
 
     @Autowired
@@ -113,6 +114,7 @@ class UserControllerTest {
 
     @Test
     @Throws(Exception::class)
+    @WithMockUser(username = "aUser", password = "aPassword", roles = ["ADMIN"])
     fun test_remove_user_ok() {
         val request = DeleteRequest("5e0b84ef2ea4095e7c19d782")
         val requestHeader: HashMap<String, String> = hashMapOf("Content-Type" to "application/json", "id" to "123")
@@ -165,12 +167,12 @@ class UserControllerTest {
 
     @Test
     @Throws(Exception::class)
+    @WithMockUser(username = "aUser", password = "aPassword", roles = ["ADMIN"])
     fun test_update_user_ok() {
-        val request = UpdateUserRequest(id = "5e77608ae8fe1146d83ec679")
         val response = getUser()
+        val request = UpdateUserRequest(id = "5e77608ae8fe1146d83ec679", name = "teste")
 
         Mockito.`when`(userService.checkUpdateUser(request)).thenReturn(Single.just(response))
-
         this.mvc.perform(MockMvcRequestBuilders.put(UserRouter.UPDATE_USER_V1)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -182,8 +184,6 @@ class UserControllerTest {
     @Throws(Exception::class)
     fun test_update_user_ok_request_header() {
         val request = UpdateUserRequest(id = "w123")
-        val requestHeader: HashMap<String, String> = hashMapOf("Content-Type" to "application/json", "id" to "123")
-        val applicationUserId = requestHeader.get("id")
         val response = getUser()
 
         Mockito.`when`(userService.checkUpdateUser(request)).thenReturn(Single.just(response))
