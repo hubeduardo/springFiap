@@ -121,7 +121,7 @@ class UserControllerTest {
         val applicationUserId = requestHeader.get("id")
         val response = DeleteResponse(id = "aaa", message = "remove_user")
 
-        Mockito.`when`(userService.checkRemoveUser(request, applicationUserId!!)).thenReturn(Single.just(response))
+        Mockito.`when`(userService.checkRemoveUser(request)).thenReturn(Single.just(response))
 
         this.mvc.perform(MockMvcRequestBuilders.delete(UserRouter.DELETE_USER_V1)
                 .accept(MediaType.APPLICATION_JSON)
@@ -139,7 +139,7 @@ class UserControllerTest {
         val applicationUserId = requestHeader.get("id")
         val response = DeleteResponse(id = "aaa", message = "remove_event")
 
-        Mockito.`when`(userService.checkRemoveUser(request, applicationUserId!!)).thenReturn(Single.just(response))
+        Mockito.`when`(userService.checkRemoveUser(request)).thenReturn(Single.just(response))
 
         this.mvc.perform(MockMvcRequestBuilders.delete(UserRouter.DELETE_USER_V1)
                 .accept(MediaType.APPLICATION_JSON)
@@ -156,7 +156,7 @@ class UserControllerTest {
         val applicationUserId = requestHeader.get("id")
         val response = DeleteResponse(id = "aaa", message = "remove_event")
 
-        Mockito.`when`(userService.checkRemoveUser(request, applicationUserId!!)).thenReturn(Single.just(response))
+        Mockito.`when`(userService.checkRemoveUser(request)).thenReturn(Single.just(response))
 
         this.mvc.perform(MockMvcRequestBuilders.delete(UserRouter.DELETE_USER_V1)
                 .accept(MediaType.APPLICATION_JSON)

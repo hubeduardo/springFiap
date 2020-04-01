@@ -41,10 +41,10 @@ class UserService {
         return updateUser(updateUserRequest)
     }
 
-    fun checkRemoveUser(deleteRequest: DeleteRequest, applicationUserId: String): Single<DeleteResponse> {
-        logger.info("Start checkRemoveUser by applicationUserId: $applicationUserId with request: $deleteRequest")
+    fun checkRemoveUser(deleteRequest: DeleteRequest): Single<DeleteResponse> {
+        logger.info("Start checkRemoveUser by applicationUserId: ${deleteRequest.id}")
 
-        return removeUser(User(deleteRequest.id), applicationUserId)
+        return removeUser(User(deleteRequest.id))
     }
 
     fun updateUser(updateUserRequest: UpdateUserRequest): Single<User> {
@@ -79,8 +79,8 @@ class UserService {
             }
     }
 
-    fun removeUser(user: User, applicationUserId: String): Single<DeleteResponse> {
-        logger.info("Start removeEvent by applicationUserId: $applicationUserId with request: $user")
+    fun removeUser(user: User): Single<DeleteResponse> {
+        logger.info("Start removeEvent by applicationUserId: ${user.id} with request: $user")
 
         return findById(user.id!!)
             .filter {
@@ -91,10 +91,10 @@ class UserService {
                     .getDeleteUserResponse(user.id, Translator.getMessage(SuccessCode.USER_REMOVE))
                 }
             }.doOnSuccess {
-                logger.info("End removeUser by applicationUserId: $applicationUserId with response: $it")
-                logger.info("End removeUser by applicationUserId: $applicationUserId with request: $it to feed")
+                logger.info("End removeUser by applicationUserId: ${user.id} with response: $it")
+                logger.info("End removeUser by applicationUserId: ${user.id} with request: $it to feed")
             }.doOnError {
-                logger.error("Error removeUser by applicationUserId: $applicationUserId with error: ${it.getError()}")
+                logger.error("Error removeUser by applicationUserId: ${user.id} with error: ${it.getError()}")
             }.onErrorResumeNext {
                 Single.error(UserException("400", Translator.getMessage(ErrorCode.USER_DOES_NOT_EXIST)))
             }

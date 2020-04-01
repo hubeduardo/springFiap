@@ -4,9 +4,6 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import java.time.LocalDate
 import javax.validation.constraints.NotEmpty
 import javax.validation.constraints.NotNull
-import org.springframework.format.annotation.DateTimeFormat
-import java.time.LocalDateTime
-import java.time.temporal.ChronoUnit
 
 data class UpdateUserRequest(
 
@@ -24,6 +21,9 @@ data class UpdateUserRequest(
     @JsonProperty("email")
     var email: String = "",
 
+    @JsonProperty("doc")
+    val doc: String = "",
+
     @JsonProperty("image_url")
     var imageUrl: String = "",
 
@@ -31,6 +31,6 @@ data class UpdateUserRequest(
     val password: String = "",
 
     @JsonProperty("birthday")
-    val birthday: LocalDateTime? = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS)
+    val birthday: LocalDate = LocalDate.now()
 
 )

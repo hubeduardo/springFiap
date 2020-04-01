@@ -31,7 +31,7 @@ class TransactionService {
 
         return save(transaction)
             .doOnSuccess {
-                logger.error("Success")
+                logger.info("Success")
             }.doOnError {
                 logger.error("Error with error: ${it.getError()}")
             }.onErrorResumeNext {
@@ -40,6 +40,4 @@ class TransactionService {
     }
 
     private fun save(transaction: Transaction) = just(transactionRepository.save(transaction))
-
-    fun findByDoc(doc: String) = just(transactionRepository.findByuserDoc(doc))
 }

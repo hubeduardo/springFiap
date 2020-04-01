@@ -33,8 +33,4 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
             ?.sessionCreationPolicy(SessionCreationPolicy.STATELESS)?.and()
             ?.csrf()?.disable()
     }
-
 }
-
-
-

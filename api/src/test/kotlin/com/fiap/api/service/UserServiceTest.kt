@@ -3,7 +3,6 @@ package com.fiap.api.service
 import com.fiap.api.domain.User
 import com.fiap.api.entities.request.UpdateUserRequest
 import com.fiap.api.repository.UserRepository
-import java.time.LocalDate
 import java.util.Optional
 import org.junit.Assert
 import org.junit.Test
@@ -95,14 +94,13 @@ class UserServiceTest {
         val mock: UserRepository = mock(UserRepository::class.java)
         doThrow(Exception::class.java).`when`(mock).delete(user)
 
-        val expected = userService.removeUser(user, "q11qq1q1q1q1").toFuture().get()
+        val expected = userService.removeUser(user).toFuture().get()
         Assert.assertEquals(true, expected?.message == "Usuário removido com sucesso!")
     }
 
     @Test
     fun test_check_update_user() {
         val updateUserRequest = UpdateUserRequest(id = "w123", name = "name")
-        val applicationUserId = "q11qq1q1q1q1"
         val userNew = getUser("newUser")
         val userOld = getUser("w123")
 

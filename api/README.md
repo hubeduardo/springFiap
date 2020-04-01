@@ -3,11 +3,11 @@ Spring Boot + Kotlin + MongoDB
 
 
 ## Efetuar autenticação para requisições
-> Todas as requisições deverão ser autenticadas com usuário e password.
+> Algumas requisições deverão ser autenticadas com usuário e senha.
 *   *Usuário* = user
 *   *Senha* = Buscar em logs para aplicação
 
-> Visualizar os container do docker.
+> Container do docker.
 
 $ docker container ls
 ```
@@ -16,14 +16,14 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 efc650fa0c5f        mongo:3.4           "docker-entrypoint.s…"   7 minutes ago        Up About a minute   0.0.0.0:12345->27017/tcp, 0.0.0.0:23456->28017/tcp   fiap-mongodb
 ```
 
-> Buscar logs informando CONTAINER ID.
+> Buscar logs com CONTAINER ID. Exemplo: acima 40287cc3aa9b
 
 $ docker container logs 40287cc3aa9b | grep -i "security password"
 ```
 Using generated security password: 2babb967-9d13-4a7a-aed9-e9d972413304
 ```
 
-> O usuário e senha deverão ser informados:
+> O usuário e senha deverão ser informados para algumas requisições onde a resposta seja 401:
 
 Postman
 <p align="center">
@@ -38,23 +38,57 @@ Navegador
 
 
 ## Endpoints Ping Test
-Ping by Test Application
+Requisição para Test de aplicação (Não é necessário Autenticar com usuário e senha) 
 ```
 curl -X GET \
-  http://localhost:5000/ping \
-  -H 'Authorization: Basic dXNlcjoxZGIyMWM5Yy1iMDI3LTQ3ZmQtODgxMS1hZDhiODcwNTg1MmQ=' \
+  http://localhost:5000/ping
 ```
 
 ## Endpoints Users
+Criar Usuário (Não é necessário Autenticar com usuário e senha)
+```
+curl -X POST \
+  http://localhost:5000/v1/fiap/create-user \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "name": "Wagner",
+    "last_name": "Carvalho",
+    "email": "wcarvalho@gmail.com",
+    "doc": "323232323232",
+    "password": "teste1",
+    "birthday": "1990-02-29"
+}'
+```
 
-Search User
+Verificar Usuário (Necessário Autenticar com usuário e senha)
 ```
 curl -X GET \
   http://localhost:5000/v1/fiap/get-user/{doc} \
-  -H 'Authorization: Basic dXNlcjoxZGIyMWM5Yy1iMDI3LTQ3ZmQtODgxMS1hZDhiODcwNTg1MmQ=' \
-  -H 'Host: localhost:5000' \
+  -H 'Authorization: Basic dXNlcjpiNzYwNDEwNC01OTc2LTQ3YzctOGY5OC0yZTIwYzgwZTg1NWI=' \
 ```
 
+Atualizar dados do Usuário (Necessário Autenticar com usuário e senha)
+```
+curl -X PUT \
+  http://localhost:5000/v1/fiap/update-user \
+  -H 'Authorization: Basic dXNlcjphYmM2NzI0OC0zYzJlLTQ2MWUtYTdkMy1mNTg1YTNkNmIwMTU=' \
+  -H 'Content-Type: application/json' \
+  -d '{
+	"id": "5e84bbac17a8846965394ce4",
+	"name": "Jose"
+}'
+```
+
+Deletar Usuário (Necessário Autenticar com usuário e senha)
+```
+curl -X DELETE \
+  http://localhost:5000/v1/fiap/delete-user \
+  -H 'Authorization: Basic dXNlcjo3MWMzODRhNS03ZmY5LTQ2YzktODBlMi0zNmZlNzIzMzJjMTU=' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "id": "5e84bbac17a8846965394ce4"
+}'
+```
 
 
 ## Endpoints Transactions

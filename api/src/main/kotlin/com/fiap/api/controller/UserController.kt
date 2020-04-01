@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestHeader
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
@@ -36,11 +35,10 @@ class UserController {
 
     @DeleteMapping(UserRouter.DELETE_USER_V1)
     fun removeUser(
-        @Valid @RequestBody deleteRequest: DeleteRequest,
-        @RequestHeader(value = "id") applicationUserId: String
+        @Valid @RequestBody deleteRequest: DeleteRequest
     ): Future<DeleteResponse> {
 
-        return userService.checkRemoveUser(deleteRequest, applicationUserId).toFutureResponse()
+        return userService.checkRemoveUser(deleteRequest).toFutureResponse()
     }
 
     @PostMapping(UserRouter.CREATE_USER_V1)
