@@ -12,33 +12,13 @@ import org.springframework.security.config.http.SessionCreationPolicy
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 class SecurityConfig : WebSecurityConfigurerAdapter() {
 
-//    override fun configure11(http: HttpSecurity?) {
-//        http?.authorizeRequests()
-//            ?.antMatchers(
-//                "/v1/fiap/create-user",
-//                "/v1/fiap/create-transaction",
-//                "/v2/api-docs",
-//                "/ping",
-//                "/swagger-resources/configuration/ui",
-//                "/swagger-resources",
-//                "/swagger-resources/configuration/security",
-//                "/swagger-ui.html",
-//                "/webjars/**")!!.permitAll()
-//            .and()
-//            .authorizeRequests()
-//            .anyRequest()
-//            .authenticated()
-//            .and()
-//            .csrf().disable()
-//    }
-
     override fun configure(http: HttpSecurity?) {
         http?.authorizeRequests()
             ?.antMatchers(
                 "/v1/fiap/create-user",
                 "/v1/fiap/create-transaction",
                 "/v2/api-docs",
-                "/ping",
+                "/ping*",
                 "/swagger-resources/configuration/ui",
                 "/swagger-resources",
                 "/swagger-resources/configuration/security",

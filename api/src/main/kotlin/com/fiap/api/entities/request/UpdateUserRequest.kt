@@ -5,6 +5,8 @@ import java.time.LocalDate
 import javax.validation.constraints.NotEmpty
 import javax.validation.constraints.NotNull
 import org.springframework.format.annotation.DateTimeFormat
+import java.time.LocalDateTime
+import java.time.temporal.ChronoUnit
 
 data class UpdateUserRequest(
 
@@ -34,6 +36,6 @@ data class UpdateUserRequest(
     @field:NotEmpty
     @get:DateTimeFormat(pattern = "dd/MM/yyyy")
     @JsonProperty("birthday")
-    val birthday: LocalDate? = null
+    val birthday: LocalDateTime? = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS)
 
 )

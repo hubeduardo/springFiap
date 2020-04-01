@@ -35,10 +35,10 @@ class UserService {
         }
     }
 
-    fun checkUpdateUser(updateUserRequest: UpdateUserRequest, applicationUserId: String): Single<User> {
-        logger.info("Start checkUpdateUser by applicationUserId: $applicationUserId with request: $updateUserRequest")
+    fun checkUpdateUser(updateUserRequest: UpdateUserRequest): Single<User> {
+        logger.info("Start checkUpdateUser by applicationUserId: ${updateUserRequest.id} with request: $updateUserRequest")
 
-        return updateUser(updateUserRequest, applicationUserId)
+        return updateUser(updateUserRequest)
     }
 
     fun checkRemoveUser(deleteRequest: DeleteRequest, applicationUserId: String): Single<DeleteResponse> {
@@ -47,8 +47,8 @@ class UserService {
         return removeUser(User(deleteRequest.id), applicationUserId)
     }
 
-    fun updateUser(updateUserRequest: UpdateUserRequest, applicationUserId: String): Single<User> {
-        logger.info("Start updateUser by applicationUserId: $applicationUserId with request: $updateUserRequest")
+    fun updateUser(updateUserRequest: UpdateUserRequest): Single<User> {
+        logger.info("Start updateUser by applicationUserId: ${updateUserRequest.id} with request: $updateUserRequest")
 
         return findById(updateUserRequest.id!!)
             .filter {
@@ -56,10 +56,10 @@ class UserService {
             }.flatMapSingle {
                 save(User().mergeDataUser(updateUserRequest, it.get()))
             }.doOnSuccess {
-                logger.info("End updateEvent by applicationUserId: $applicationUserId with response: $it")
-                logger.info("End updateEvent by applicationUserId: $applicationUserId with request: $it to feed")
+                logger.info("End updateEvent by applicationUserId: $${updateUserRequest.id} with response: $it")
+                logger.info("End updateEvent by applicationUserId: $${updateUserRequest.id} with request: $it to feed")
             }.doOnError {
-                logger.error("Error updateEvent by applicationUserId: $applicationUserId with error: ${it.getError()}")
+                logger.error("Error updateEvent by applicationUserId: $${updateUserRequest.id} with error: ${it.getError()}")
             }.onErrorResumeNext {
                 Single.error(UserException("400", Translator.getMessage(ErrorCode.USER_DOES_NOT_EXIST)))
             }

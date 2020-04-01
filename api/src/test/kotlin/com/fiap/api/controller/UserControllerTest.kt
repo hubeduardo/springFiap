@@ -50,8 +50,7 @@ class UserControllerTest {
                 email = "teste@gmail.com",
                 imageUrl = "",
                 doc = "111.222.333.444",
-                password = "teste",
-                birthday = LocalDate.of(2002, 1, 2)
+                password = "teste"
         )
     }
 
@@ -93,8 +92,6 @@ class UserControllerTest {
         Mockito.`when`(userService.checkCreateUser(request)).thenReturn(Single.just(response))
 
         this.mvc.perform(MockMvcRequestBuilders.post(UserRouter.CREATE_USER_V1)
-                .accept(MediaType.APPLICATION_JSON)
-                .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(request)))
                 .andExpect(MockMvcResultMatchers.status().is4xxClientError)
     }
@@ -102,7 +99,7 @@ class UserControllerTest {
     @Test
     @Throws(Exception::class)
     fun test_create_event_body() {
-        val request = getUserRequest()
+        val request = CreateUserRequest()
         val response = getUser()
 
         Mockito.`when`(userService.checkCreateUser(request)).thenReturn(Single.just(response))
@@ -170,16 +167,13 @@ class UserControllerTest {
     @Throws(Exception::class)
     fun test_update_user_ok() {
         val request = UpdateUserRequest(id = "5e77608ae8fe1146d83ec679")
-        val requestHeader: HashMap<String, String> = hashMapOf("Content-Type" to "application/json", "id" to "123")
-        val applicationUserId = requestHeader.get("user_id")
         val response = getUser()
 
-        Mockito.`when`(userService.checkUpdateUser(request, applicationUserId!!)).thenReturn(Single.just(response))
+        Mockito.`when`(userService.checkUpdateUser(request)).thenReturn(Single.just(response))
 
         this.mvc.perform(MockMvcRequestBuilders.put(UserRouter.UPDATE_USER_V1)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
-                .header("id", applicationUserId)
                 .content(objectMapper.writeValueAsString(request)))
                 .andExpect(MockMvcResultMatchers.status().isOk)
     }
@@ -192,7 +186,7 @@ class UserControllerTest {
         val applicationUserId = requestHeader.get("id")
         val response = getUser()
 
-        Mockito.`when`(userService.checkUpdateUser(request, applicationUserId!!)).thenReturn(Single.just(response))
+        Mockito.`when`(userService.checkUpdateUser(request)).thenReturn(Single.just(response))
 
         this.mvc.perform(MockMvcRequestBuilders.put(UserRouter.UPDATE_USER_V1)
                 .accept(MediaType.APPLICATION_JSON)
@@ -209,7 +203,7 @@ class UserControllerTest {
         val applicationUserId = requestHeader.get("id")
         val response = getUser()
 
-        Mockito.`when`(userService.checkUpdateUser(request, applicationUserId!!)).thenReturn(Single.just(response))
+        Mockito.`when`(userService.checkUpdateUser(request)).thenReturn(Single.just(response))
 
         this.mvc.perform(MockMvcRequestBuilders.put(UserRouter.UPDATE_USER_V1)
                 .accept(MediaType.APPLICATION_JSON)

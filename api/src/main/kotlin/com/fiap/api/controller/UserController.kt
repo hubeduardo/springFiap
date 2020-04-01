@@ -28,11 +28,10 @@ class UserController {
 
     @PutMapping(UserRouter.UPDATE_USER_V1)
     fun updateUser(
-        @Valid @RequestBody updateUserRequest: UpdateUserRequest,
-        @RequestHeader(value = "id") applicationUserId: String
+        @Valid @RequestBody updateUserRequest: UpdateUserRequest
     ): Future<User> {
 
-        return userService.checkUpdateUser(updateUserRequest, applicationUserId).toFutureResponse()
+        return userService.checkUpdateUser(updateUserRequest).toFutureResponse()
     }
 
     @DeleteMapping(UserRouter.DELETE_USER_V1)

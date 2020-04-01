@@ -33,14 +33,13 @@ class UserServiceTest {
     private fun getUser(id: String): User {
 
         return User(id,
-                "Nome",
+                "name",
                 "LastName",
                 "teste@gmail.com",
                 "222.111.222-11",
                 "",
                 1,
-                "teste",
-                LocalDate.of(2002, 1, 2))
+                "teste")
     }
 
     @Test
@@ -54,7 +53,7 @@ class UserServiceTest {
         val responseNewEvent = User().mergeDataUser(newUser, responseFindById.get())
         `when`(userRepository.save(responseNewEvent)).thenReturn(responseNewEvent)
 
-        val expected: User? = userService.updateUser(newUser, "w123").toFuture().get()
+        val expected: User? = userService.updateUser(newUser).toFuture().get()
 
         Assert.assertEquals(true, expected?.name == oldUser.name)
         Assert.assertEquals(true, expected?.imageUrl == newUser.imageUrl)
@@ -66,9 +65,9 @@ class UserServiceTest {
                 name = "teste",
                 imageUrl = "")
         try {
-            userService.updateUser(newUser, "q11qq1q1q1q1").toFuture().get()
+            userService.updateUser(newUser).toFuture().get()
         } catch (ex: Exception) {
-            Assert.assertEquals("", ex.message)
+            Assert.assertEquals("com.fiap.api.entities.exception.UserException: O usuário não está cadastrado!", ex.message)
         }
     }
 
@@ -113,7 +112,7 @@ class UserServiceTest {
         val user = User().mergeDataUser(updateUserRequest, userOld)
 
         `when`(userRepository.save(user)).thenReturn(userNew)
-        val expected = userService.checkUpdateUser(updateUserRequest, applicationUserId).toFuture().get()
+        val expected = userService.checkUpdateUser(updateUserRequest).toFuture().get()
 
         Assert.assertEquals(true, expected.name == updateUserRequest.name)
     }

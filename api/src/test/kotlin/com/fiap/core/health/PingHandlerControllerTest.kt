@@ -38,7 +38,7 @@ class PingHandlerControllerTest {
 
     @Test
     @Throws(Exception::class)
-    fun test_ping_checj_response() {
+    fun test_ping_check_response() {
         Assert.assertEquals("pong", pingHandlerController.health())
     }
 }

@@ -8,6 +8,8 @@ import java.time.LocalDate
 import org.bson.types.ObjectId
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
+import java.time.LocalDateTime
+import java.time.temporal.ChronoUnit
 
 @Document(collection = "user")
 data class User(
@@ -38,7 +40,7 @@ data class User(
     val password: String = "",
 
     @JsonProperty("birthday")
-    val birthday: LocalDate? = null
+    val birthday: LocalDateTime? = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS)
 
 ) {
     fun mergeDataUser(newUser: UpdateUserRequest, oldUser: User): User {
