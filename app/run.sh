@@ -24,10 +24,4 @@ echo "********************************************************"
 echo "Starting transactions"
 echo "********************************************************"
 
-pip install easy_install pip
-pip install python
-pip install py-pip
-pip install requests==2.21.0
-pip install requests-futures==0.9.9
-
-#exec python /usr/local/batch/transactions.py
+exec python /usr/local/batch/transactions.py

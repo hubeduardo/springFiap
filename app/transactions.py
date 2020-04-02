@@ -6,8 +6,9 @@ import time
 import requests
 import sys
 
-PATH = sys.path[0] + '/src/main/resources/base.txt'
-URL = 'http://localhost:5000/v1/fiap/create-transaction'
+#PATH = sys.path[0] + '/src/main/resources/base.txt'
+PATH = '/usr/local/batch/base.txt'
+URL = 'http://fiap-api:5000/v1/fiap/create-transaction'
 headers = {'Content-Type': 'application/json'}
 
 def createPayload(doc):
@@ -18,7 +19,6 @@ def createPayload(doc):
 def post(doc):
     try:
         resp = requests.post(URL, json=createPayload(doc))
-        #print resp
     except Exception as e:
         print e
         pass

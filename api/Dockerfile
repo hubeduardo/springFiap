@@ -4,8 +4,6 @@ RUN apk add --update bash && rm -rf /var/cache/apk/*
 
 USER root
 RUN apk update && apk upgrade && apk add netcat-openbsd
-RUN apk add --update python
-RUN apk add --update py-pip
 
 RUN mkdir -p /usr/local/api
 
