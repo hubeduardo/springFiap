@@ -1,6 +1,6 @@
 # Avaliação - Spring Framework
 
-SpringBoot + Swagger + Kotlin + MongoDB + Python + Docker
+Spring + Kotlin + MongoDB + Docker + Python
 
 ## Problema:
 
@@ -25,35 +25,22 @@ seguintes requisitos:
 
 ## Solução:
 
-RF1, RF2 e RF3
-> Foi criado uma aplicação em Kotlin/[Spring Framework](https://spring.io/projects/spring-framework "Spring Framework") com utlização do [Spring Boot](https://spring.io/projects/spring-boot "Spring Boot") e Banco de Dados NOSQL [MongoDB](https://www.mongodb.com/ "MongoDB") para cadastrar usuários, fazer transações e possível fazer download de PDF com extrato das transações.
+RF1, RF3 e RF4 (Api)
+> Aplicação em [Kotlin](https://kotlinlang.org/) / [Spring](https://spring.io/projects/spring-framework) utilizando [Reactivex - RxJava2](http://reactivex.io/) com [MongoDB](https://www.mongodb.com/) para cadastrar usuários e transações.
+A idéia em ter uma aplicação assíncrona não bloqueante com segurança através do [Spring Security](https://spring.io/projects/spring-security), onde as requisições deverão ser autenticadas por usuário e senha. Toda documentação foi feita pelo
+[Swagger](https://github.com/wordnik/swagger-spec) para efetuar as chamadas REST em Api's.
 
-RF2
-> Foi criada uma aplicação em Kotlin/[Spring Framework](https://spring.io/projects/spring-boot "Spring Framework") com utilização do [Spring Batch](https://spring.io/projects/spring-batch "Spring Batch") para fazer leitura de arquivos para integração de usuários.
+RF2 (App)
+> Aplicação em [Kotlin](https://kotlinlang.org/) / [Spring](https://spring.io/projects/spring-boot) com utilização do [Spring Batch](https://spring.io/projects/spring-batch) para fazer leitura de arquivos para integração de usuários.
 
-Carga massiva para transações
-> Foi desenvolvido um script em Python para fazer teste de carga massiva em transações.
+## Observação 
+*   *Simular Ambiente de Transações*, será executado um Script em [Python](https://www.python.org/), no [container](https://www.docker.com/resources/what-container) da aplicação (App).
 
+*   *Formatação de Código Padrão*, utilizado plugin Plugin [kotlinter](https://plugins.gradle.org/plugin/org.jmailen.kotlinter/1.19.0).
 
-## Pontos Explorados:
-Lib RxJava2:
-> Foi utilizada a lib para explorar o paradigma da programação reativa.
+*   *Integração de Teste*, utilizado [CircleCi](https://circleci.com/).
 
-Plugin kotlinter
-> Foi utilizado plugin para manter a formatação de código padrão.
-
-Banco de Dados NOSQL
-> Foi utilizado banco de dados NOSQL mongoDB, pois pensamos em trabalhar com um banco de Dados não bloqueante.
-
-CircleCi
-> Foi utilizado para integração de teste com CI/CD utlizando.
-
-Docker
-> Foi utilizamos container para que aplicação possa funcionar em um ambiente unico.
-
-# Execução - Projeto
-
-O projeto poderá ser executado através do Docker, porém pode ser executado manualmente.
+*   *Executar Aplicação*, utilizado [Docker](https://www.docker.com/) para a aplicação funcionar em qualquer ambiente.
 
 
 ## Requisitos:
@@ -63,13 +50,13 @@ O projeto poderá ser executado através do Docker, porém pode ser executado ma
 3. `Python 2.7`
 ```
 
-## Executar projeto no Mac/Linux
+## Executar Fluxo no Mac/Linux
 ```
 cd springFiap
 ./start-project.sh
 ```
 
-## Executar projeto no Windows
+## Executar Fluxo no Windows
 ```
 cd springFiap
 sh start-project.sh
@@ -79,6 +66,9 @@ sh start-project.sh
 ```
 docker-compose down --rmi all
 ```
+
+## Documentação Swagger
+[Api Swagger](http://localhost:5000/swagger-ui.html), [GitHub Api](), [GitHub App]()
 
 
 
